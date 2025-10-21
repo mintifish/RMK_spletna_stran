@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rod mlinskih kamnov</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'scout-brown': '#654B38',
+            'scout-taupe': '#6B5B51',
+            'scout-gray': '#9E9A9A',
+            'scout-cream': '#DEDCDA',
+            'scout-white': '#F5F5F5'
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-white">
+  <!-- Header -->
+  <header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center space-x-3 ">
+        <img src="rmk-logo.png" alt="Rod Mlinskih kamnov logo" class="w-12 h-12">
+        <h1 class="text-scout-brown font-bold text-4xl">ROD MLINSKIH KAMNOV</h1>
+      </div>
+      <a href="https://forms.gle/your-form-link" target="_blank" 
+         class="bg-scout-brown text-white px-5 py-3 rounded-lg hover:bg-scout-taupe transition">
+        Prijavnica
+      </a>
+    </div>
+  </header>
+
+  <!-- Welcome -->
+  <section class="bg-scout-cream py-16">
+    <div class="container mx-auto px-6 text-center">
+      <h2 class="text-4xl font-bold text-scout-brown mb-4">Dobrodošli v Rod mlinskih kamnov</h2>
+      <p class="text-lg text-gray-700 mb-8 max-w-2xl mx-auto">
+        Tu se nam lahko pridružite, se prijavite na naše aktivnosti in poizveste več o nas.
+      </p>
+      <div class="max-w-4xl mx-auto">
+        <div class="flex justify-center gap-4 mb-6 ">
+          <button onclick="toggleSection('about')" 
+                  class="bg-scout-brown hover:bg-scout-taupe text-white px-6 py-3 rounded font-semibold transition-colors">
+            O nas
+          </button>
+          <button onclick="toggleSection('history')" 
+                  class="bg-scout-brown hover:bg-scout-brown/90 text-white px-6 py-3 rounded font-semibold transition-colors">
+            Zgodovina
+          </button>
+        </div>
+        <div id="about-section" class="hidden bg-white p-8 rounded-lg shadow-md mb-4">
+            prihaja kmalu!
+          </p>
+        </div>
+    <div id="history-section" class="hidden bg-white p-8 rounded-lg shadow-md mb-4">
+      <h3 class="text-2xl font-bold text-scout-green mb-8 text-center">Zgodovina</h3>
+
+      <!-- Timeline wrapper -->
+      <div class="relative border-l-4 border-scout-brown pl-6 space-y-12">
+        
+        <!-- Timeline item -->
+        <div class="relative">
+          <div class="absolute -left-3 top-2 w-6 h-6 bg-scout-brown rounded-full border-2 border-white"></div>
+          <h4 class="text-xl font-bold text-scout-brown">Začetek našega rodu</h4>
+          <p class="text-gray-700 mt-2">
+            Nekaj let nazaj smo se "odcepili" od Domžalskega rodu in postali svoj samostojen rod od takrat naprej
+            se zavezujemo, da naši skupnosti pričaramo čim boljši svet.
+          </p>
+          <span class="block text-sm text-scout-gray">Več o naši zgodovini še prihaja</span>
+        </div>
+
+      </div>
+    </div>
+
+      </div>
+    </div>
+  </section>
+
+<!-- Adventures Section -->
+<section class="py-12 bg-scout-white">
+  <div class="container mx-auto px-6">
+    <h3 class="text-2xl font-bold text-center text-scout-brown mb-8">Naše pustolovščine</h3>
+
+    <div class="relative max-w-6xl mx-auto">
+      <!-- Slider track -->
+      <div class="overflow-hidden">
+        <div id="adventure-track" class="flex transition-transform duration-500 ease-in-out">
+          <!-- Each slide: 1/3 width -->
+        <div class="w-1/3 flex-shrink-0 relative rounded-lg overflow-hidden">
+            <img src="NPjpgs/tabor6.jpg" class="w-full h-64 object-cover rounded-lg" alt="Previden delavec">
+            <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white text-center py-2">Previden delavec</div>
+          </div>
+          <div class="w-1/3 flex-shrink-0 relative rounded-lg overflow-hidden">
+            <img src="NPjpgs/tabor5.jpg" class="w-full h-64 object-cover rounded-lg" alt="Filip in Lan">
+            <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white text-center py-2">Filip in Lan</div>
+          </div>
+          <div class="w-1/3 flex-shrink-0 relative rounded-lg overflow-hidden">
+            <img src="NPjpgs/tabor4.jpg" class="w-full h-64 object-cover rounded-lg" alt="Dva lenuščka">
+            <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white text-center py-2">Dva lenuščka</div>
+          </div>
+          <div class="w-1/3 flex-shrink-0 relative rounded-lg overflow-hidden">
+            <img src="NPjpgs/tabor3.jpg" class="w-full h-64 object-cover rounded-lg" alt="Pustolovci">
+            <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white text-center py-2">Pustolovci</div>
+          </div>
+          <div class="w-1/3 flex-shrink-0 relative rounded-lg overflow-hidden">
+            <img src="NPjpgs/tabor2.jpg" class="w-full h-64 object-cover rounded-lg" alt="Kopanje Podbela">
+            <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white text-center py-2">Kopanje Podbela</div>
+          </div>
+          <div class="w-1/3 flex-shrink-0 relative rounded-lg overflow-hidden">
+            <img src="NPjpgs/tabor1.jpg" class="w-full h-64 object-cover rounded-lg" alt="Filip in Tian">
+            <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white text-center py-2">Filip in Tian</div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Arrows -->
+      <button id="prev-adventure"
+              class="absolute -left-14 top-1/2 -translate-y-1/2 bg-scout-brown text-white p-4 rounded-full shadow hover:bg-scout-taupe transition transform hover:scale-110">
+        &#10094;
+      </button>
+      <button id="next-adventure"
+              class="absolute -right-14 top-1/2 -translate-y-1/2 bg-scout-brown text-white p-4 rounded-full shadow hover:bg-scout-taupe transition transform hover:scale-110">
+        &#10095;
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.getElementById("adventure-track");
+  const slides = track.children;
+  const prev = document.getElementById("prev-adventure");
+  const next = document.getElementById("next-adventure");
+
+  let index = 0;
+  const visible = 3; // number of images shown at once
+
+  function updateSlider() {
+    const slideWidth = slides[0].offsetWidth;
+    track.style.transform = `translateX(-${index * slideWidth}px)`;
+  }
+
+  next.addEventListener("click", () => {
+    if (index < slides.length - visible) {
+      index++;
+      updateSlider();
+    }
+  });
+
+  prev.addEventListener("click", () => {
+    if (index > 0) {
+      index--;
+      updateSlider();
+    }
+  });
+
+  window.addEventListener("resize", updateSlider);
+});
+</script>
+</section>
+
+  <!-- Tabs -->
+  <section class="py-16 bg-scout-white ">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-wrap justify-center gap-2 mb-8">
+        <button onclick="switchTab('novice')" 
+                class="tab-btn bg-scout-brown text-white px-6 py-3 rounded font-semibold transition-colors active">
+          Novice
+        </button>
+        <button onclick="switchTab('termini')" 
+                class="tab-btn bg-gray-300 text-gray-700 px-6 py-3 rounded font-semibold transition-colors hover:bg-scout-brown hover:text-white">
+          Termini
+        </button>
+        <button onclick="switchTab('galerija')" 
+        class="tab-btn bg-gray-300 text-gray-700 px-6 py-3 rounded font-semibold transition-colors hover:bg-scout-brown hover:text-white">
+          Galerija
+        </button>
+        <button onclick="switchTab('kontakt')" 
+                class="tab-btn bg-gray-300 text-gray-700 px-6 py-3 rounded font-semibold transition-colors hover:bg-scout-brown hover:text-white">
+          Kontakt
+        </button>
+        <button onclick="switchTab('vodstvo')" 
+                class="tab-btn bg-gray-300 text-gray-700 px-6 py-3 rounded font-semibold transition-colors hover:bg-scout-brown hover:text-white">
+          Vodstvo
+        </button>
+      </div>
+      <div class="bg-scout-cream rounded-lg p-8 min-h-80">
+        <!-- Novice -->
+        <div id="novice-content" class="tab-content">
+          <h3 class="text-2xl font-bold text-scout-brown mb-6">Najnovejše novice</h3>
+          <div class="space-y-6">
+            <!--
+            <article class="bg-white p-6 rounded-lg shadow-md">
+              <h4 class="text-xl font-bold text-scout-green mb-2">Poletni tabor 2024</h4>
+              <p class="text-scout-brown text-sm mb-3">15. marec 2024</p>
+              <p class="text-gray-700">Prijave za letošnji poletni tabor so odprte! Tabor bo potekal od 15. do 22. julija v čudovitem Bohinju.</p>
+            </article>
+            <article class="bg-white p-6 rounded-lg shadow-md">
+              <h4 class="text-xl font-bold text-scout-green mb-2">Uspeh na državnem tekmovanju</h4>
+              <p class="text-scout-brown text-sm mb-3">8. marec 2024</p>
+              <p class="text-gray-700">Naši skavti so osvojili drugo mesto na državnem tekmovanju v orientaciji. Čestitamo vsem udeležencem!</p>
+            </article>
+            -->
+            <article class="bg-white p-6 rounded-lg shadow-md">
+              <h4 class="text-xl font-bold text-scout-green mb-2">Nove novice bojo objavljene sproti</h4>
+              <p class="text-scout-brown text-sm mb-3">16. oktober 2025</p>
+              <p class="text-gray-700">Nove novice se bodo izpisale tukaj!</p>
+            </article>
+          </div>
+        </div>
+
+  <!-- Kontakt -->
+  <div id="kontakt-content" class="tab-content hidden">
+    <h3 class="text-2xl font-bold text-scout-brown mb-6">Kontakt</h3>
+    <div class="grid md:grid-cols-2 gap-8">
+      
+      <!-- Vodstvo -->
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h4 class="text-xl font-bold text-scout-green mb-4">Vodstvo</h4>
+        <div class="space-y-3 text-gray-700">
+          <p><strong>Načelnik:</strong> Filip Jakob Špendl</p>
+          <p><strong>Email:</strong> <a href="mailto:rmkrad@gmail.com" class="text-scout-green hover:underline">rmkrad@gmail.com</a></p>
+          <p><strong>Telefon:</strong> <a href="tel:+38670366357" class="text-scout-green hover:underline">+386 70 366 357</a></p>
+        </div>
+      </div>
+
+      <!-- Ostali podatki -->
+      <div class="bg-white p-6 rounded-lg shadow-md">
+        <h4 class="text-xl font-bold text-scout-green mb-4">Ostali podatki</h4>
+        <div class="space-y-3 text-gray-700">
+          <p><strong>Lokacija:</strong> Prešernova cesta 43, Radomlje, 1235 Radomlje</p>
+          <p><strong>Davčna številka:</strong> 27905446</p>
+          <p><strong>TRR:</strong> SI56 0201 2000 1234 567 (NLB d.d.)</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<!-- Vodstvo -->
+<div id="vodstvo-content" class="tab-content hidden max-h-[800px] overflow-y-auto scrollbar-custom">
+  <h3 class="text-2xl font-bold text-scout-brown mb-8 text-center">Spoznajte naše vodstvo</h3>
+  
+  <!-- === Glavni === -->
+  <h4 class="text-xl font-bold text-scout-brown mb-4 text-center">Člani rodove uprave</h4>
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
+    
+    <!-- Načelnik -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-yellow-400">
+      <img src="vodstvo/FilipJakobSpendl.png" alt="FilipJakobŠpendl" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">Načelnik – Filip Jakob Špendl</h4>
+      <p class="text-gray-700 mt-2 text-sm">Zelo organiziran tabornik zaslužen za povezanost rodu in vodstva, rad se druži in uživa v pospravljanju.</p>
+    </div>
+
+    <!-- Gospodar -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-yellow-400">
+      <img src="vodstvo/AndrejSusnik.png" alt="Andrej Sušnik" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">Gospodar – Andrej Sušnik</h4>
+      <p class="text-gray-700 mt-2 text-sm">Čudovit vodnik, od katerega vedno nekaj novega izveš. Skrbi, da je vsak član bister in odgovoren.</p>
+    </div>
+
+    <!-- Zakladnik -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-yellow-400">
+      <img src="vodstvo/JureSusnik.png" alt="Jure Sušnik" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">Zakladnik – Jure Sušnik</h4>
+      <p class="text-gray-700 mt-2 text-sm">Dolgoletni kuhar, ki je sedaj "upokojen" in ima vlogo blagajnika. Obožuje čistočo v kuhinji in med računi.</p>
+    </div>
+
+    <!-- Propagandist -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-yellow-400">
+      <img src="vodstvo/MaticBozic.png" alt="Matic Božič" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">Propagandist – Matic Božič</h4>
+      <p class="text-gray-700 mt-2 text-sm">Priljubljen med mlajšimi. Vodniški vajenec in glavni propagandist.</p>
+    </div>
+
+    <!-- PP načelnik-->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-yellow-400">
+      <img src="vodstvo/ZivaHabe.png" alt="Živa Habe" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">PP Načelnik – Živa Habe</h4>
+      <p class="text-gray-700 mt-2 text-sm">PP načelnik in vodnica, zelo povezana z ostalimi rodovi in ima veliko taborniških znanj.</p>
+    </div>
+
+    <!-- GG načelnik -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-yellow-400">
+      <img src="vodstvo/MasaKopitar.png" alt="Maša Kopitar" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">GG Načelnik – Maša Kopitar</h4>
+      <p class="text-gray-700 mt-2 text-sm">Zelo živahna, vedno polna energije in vedno pripravljena za druženje. V naš rod in k našim akcijam vedno prinese ogromno dobrega vzdušja in energije.</p>
+    </div>
+
+    <!-- MČ načelnik -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-yellow-400">
+      <img src="vodstvo/ZanaHabe.png" alt="Žana Habe" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">MČ načelnik – Žana Habe</h4>
+      <p class="text-gray-700 mt-2 text-sm">Samozavestna in ljubeča, vedno pripravljena na vsako oviro s svojim survival packom. </p>
+    </div>
+
+        <!-- IT podpora -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-yellow-400">
+      <img src="vodstvo/TianHrovat.png" alt="Žana Habe" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">IT podpora – Tian Hrovat</h4>
+      <p class="text-gray-700 mt-2 text-sm">Vodniški vajenec in IT podpora našega rodu ter rodov rekorder za govorjenje.</p>
+    </div>
+
+  </div>
+
+  <!-- === Vodniki === -->
+  <h4 class="text-xl font-bold text-scout-brown mb-4 text-center">Vodniki</h4>
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    
+    <!-- Neza Habe-->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-gray-300">
+      <img src="vodstvo/NezaHabe.png" alt="Neža Habe" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">Vodnica – Neža Habe</h4>
+      <p class="text-gray-700 mt-2 text-sm">Odlična vodnica, ki je pod vodstvom Jureta Sušnika postala tudi odlična glava kuhinje. </p>
+    </div>
+
+    <!-- Ana Bešter -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-gray-300">
+      <img src="vodstvo/AnaBester.png" alt="Ana Bešter" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">Vodnica – Ana Bešter</h4>
+      <p class="text-gray-700 mt-2 text-sm">Javi se za ogromno nalog in s svojo energijo krepi vsako aktivnost rodu. Teta iz ozadja</p>
+    </div>
+
+    <!-- Ana Pšeničnik -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-gray-300">
+      <img src="vodstvo/AnaPsenicnik.png" alt="Ana Pšeničnik" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">Vodnica – Ana Pšeničnik</h4>
+      <p class="text-gray-700 mt-2 text-sm">Najbolj kulska oseba na taboru! In drugje.</p>
+    </div>
+
+    <!-- Tia Poteko -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-gray-300">
+      <img src="vodstvo/TianPoteko.png" alt="Tia Poteko" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">Vodnica – Tia Poteko</h4>
+      <p class="text-gray-700 mt-2 text-sm">Umetniško nadarjena vodnica, ki je zelo povezana svojim vodom. Aktualna rodova prvakinja v štiri v vrsto.</p>
+    </div>
+
+    <!-- Nika Habe-->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-gray-300">
+      <img src="vodstvo/NikaHabe.png" alt="Nika Habe" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">Vodnica – Nika Habe</h4>
+      <p class="text-gray-700 mt-2 text-sm">Vodnica polna veselja in šal. Na stvari doda pogled iz druge perspektive.</p>
+    </div>
+
+    <!-- Andrej Sušnik-->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-gray-300">
+      <img src="vodstvo/AndrejSusnik.png" alt="Andrej Sušnik" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">Vodnik – Andrej Sušnik</h4>
+      <p class="text-gray-700 mt-2 text-sm">Čudovit vodnik, od katerega vedno nekaj novega izveš. Kaskader v taborniških skečih.</p>
+    </div>
+
+    <!-- Masa Kopitar -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-gray-300">
+      <img src="vodstvo/MasaKopitar.png" alt="Maša Kopitar" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">Vodnica – Maša Kopitar</h4>
+      <p class="text-gray-700 mt-2 text-sm">Zelo živahna, vedno polna energije in vedno pripravljena za druženje, V naš rod in k našim akcijam vedno prinese ogromno dobre energije in vzdušja.</p>
+    </div>
+
+    <!-- Zana Habe -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-gray-300">
+      <img src="vodstvo/ZanaHabe.png" alt="Žana Habe" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">Vodnica – Žana Habe</h4>
+      <p class="text-gray-700 mt-2 text-sm">Samozavestna, Vedno pripravljena s svojim survival packom, tabornica, ki je vedno pripravljena pomagati.</p>
+    </div>
+
+    <!-- Ziva Habe-->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-gray-300">
+      <img src="vodstvo/ZivaHabe.png" alt="Živa Habe" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">Vodnica – Živa Habe</h4>
+      <p class="text-gray-700 mt-2 text-sm">Vodnica, zelo povezana z ostalimi rodovi in ima veliko taborniških znanj.</p>
+    </div>
+
+    <!-- Tian Hrovat -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-gary-300">
+      <img src="vodstvo/TianHrovat.png" alt="Žana Habe" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">Vodnik – Tian Hrovat</h4>
+      <p class="text-gray-700 mt-2 text-sm">Vodniški vajenec, ki vsrkava vsako varianto vzoje v vlogi vodnika.</p>
+    </div>
+    
+
+        <!-- Matic Božič -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-gray-300">
+      <img src="vodstvo/MaticBozic.png" alt="Matic Božič" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">Vodnik – Matic Božič</h4>
+      <p class="text-gray-700 mt-2 text-sm">Sovodnik, ki je tudi zelo zelo priljubljen med mlajšimi.</p>
+    </div>
+
+    <!-- Jama -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-gray-300">
+      <img src="vodstvo/jama.png" alt="Jama" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">Spiritualna vodja– Jama</h4>
+      <p class="text-gray-700 mt-2 text-sm">Mistično bitje jama, ki se prebudi vsako leto, da sklene taborniško ljubezen.</p>
+    </div>
+
+  </div>
+
+  <!-- === GG vzgoja / murncki === -->
+  <h4 class="text-xl font-bold text-scout-brown mb-4 text-center mt-10">GG vzgoja</h4>
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center">
+      <!-- Jaša Farič -->
+      <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-gray-400">
+        <img src="vodstvo/JasaFaric.png" alt="Jaša Farič" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+        <h4 class="text-lg font-bold text-scout-green">GG vzgoja – Jaša Farič</h4>
+        <p class="text-gray-700 mt-2 text-sm">Tabornik, ki je vedno vesel in je vedno na voljo za vsako malenkost.</p>
+      </div>
+
+              <!-- Žan Mežnar -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-gray-400">
+      <img src="vodstvo/ZanMeznar.png" alt="Matic Božič" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">GG vzgoja – Žan Mežnar</h4>
+      <p class="text-gray-700 mt-2 text-sm">Vodniški vajenec, ki je tudi zelo priljubljen med mlajšimi.</p>
+    </div>
+              <!-- Filip Karadžič -->
+    <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 border-4 border-gray-400">
+      <img src="vodstvo/FilipKaradzic.png" alt="Matic Božič" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300">
+      <h4 class="text-lg font-bold text-scout-green">GG vzgoja – Filip Karadžič</h4>
+      <p class="text-gray-700 mt-2 text-sm">Izversten orodjar vedno prinse kar rabiš v rekordnem času.</p>
+    </div>
+
+
+  </div>
+</div>
+  <!-- Termini -->
+  <div id="termini-content" class="tab-content hidden">
+    <h3 class="text-2xl font-bold text-scout-brown mb-6">Termini vodovih sestankov</h3>
+    <div id="termini-list" class="space-y-4"></div>
+  </div>
+
+  <script>
+    const termini = [
+      {
+        title: "Drugi razredi",
+        vodnik: "Neža Habe",
+        cas: "torek, 16.00 - 17.00",
+        razred: "Ni še določen"
+      },
+      {
+        title: "Tretji razredi",
+        vodnik: "Ana Pšeničnik",
+        cas: "četrtek, 15.00 - 16.00",
+        razred: "Ni še določen"
+      },
+      {
+        title: "Četrti razredi",
+        vodnik: "Ana Bešter",
+        cas: "ponedeljek, 16.15 - 17.15",
+        razred: "Ni še določen"
+      },
+      {
+        title: "Peti razredi",
+        vodnik: "Žana Habe",
+        cas: "ponedeljek, 15.00 - 16.00",
+        razred: "Ni še določen"
+      },
+      {
+        title: "Šesti razredi",
+        vodnik: "Maša Kopitar",
+        cas: "četrtek, 16.00 - 17.00",
+        razred: "Ni še določen"
+      },
+      {
+        title: "Sedmi razredi",
+        vodnik: "Živa Habe",
+        cas: "torek, 16.00 - 17.00",
+        razred: "Ni še določen"
+      },
+      {
+        title: "Osmi razredi",
+        vodnik: "Andrej Sušnik",
+        cas: "četrtek, 16.00 - 17.00",
+        razred: "Ni še določen"
+      },
+      {
+        title: "Deveti razredi",
+        vodnik: "Filip Jakob Špendl",
+        cas: "petek, 15.00 - 16. 00",
+        razred: "Ni še določen"
+      },
+    ];
+
+    function renderTermini() {
+      const container = document.getElementById("termini-list");
+      container.innerHTML = "";
+      termini.forEach(termin  => {
+        const div = document.createElement("div");
+        div.className = "bg-white p-6 rounded-lg shadow-md";
+        div.innerHTML = `
+          <h4 class="font-bold text-scout-green text-lg mb-2">${termin.title}</h4>
+          <p class="text-gray-700"><strong>Vodnik:</strong> ${termin.vodnik}</p>
+          <p class="text-gray-700"><strong>Kdaj:</strong> ${termin.cas}</p>
+          <p class="text-gray-700"><strong>Razred:</strong> ${termin.razred}</p>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", renderTermini);
+  </script>
+
+
+
+    <!-- Galerija -->
+  <div id="galerija-content" class="tab-content hidden">
+    <h3 class="text-2xl font-bold text-scout-brown mb-6">Galerija</h3>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      <div class="col-span-2 md:col-span-3 flex items-center justify-center h-48 bg-white rounded-lg shadow-md">
+        <p class="text-gray-500 text-lg font-semibold">Galerija prihaja kmalu</p>
+      </div>
+    </div>
+  </div>
+
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-scout-brown text-white py-4">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <img src="rmk-logo.png" alt="Rod Mlinskih kamnov logo" class="w-10 h-10 ">
+            <h4 class="text-lg font-bold">Rod mlinskih kamnov</h4>
+          </div>
+          <p class="text-white/80">Vzgajamo mlade v duhu taborniških vrednot že od leta 1984.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-bold mb-4">Kontakt</h4>
+          <div class="space-y-2 text-white/80">
+            <p>rmkrad@gmail.com</p>
+            <p>+386 70 366 357
+            </p>
+          </div>
+        </div>
+        <div>
+            <h4 class="text-lg font-bold mb-4">Sledite nam</h4>
+            <div class="space-y-2">
+                <a href="https://www.facebook.com/rmkradomlje/?locale=sl_SI" target="_blank" 
+                class="block text-white/80 hover:text-white transition-colors">Facebook</a>
+                <a href="https://www.instagram.com/rodmlinskihkamnov/?hl=en" target="_blank" 
+                class="block text-white/80 hover:text-white transition-colors">Instagram</a>
+            </div>
+        </div>
+      </div>
+      <div class="border-t border-white/20 mt-8 pt-6 text-center text-white/60">
+        <p>&copy; 2025 Rod mlinskih kamnov. Vse pravice pridržane.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    function toggleSection(sectionName) {
+      const section = document.getElementById(sectionName + '-section');
+      if (section.classList.contains('hidden')) {
+        document.getElementById('about-section').classList.add('hidden');
+        document.getElementById('history-section').classList.add('hidden');
+        section.classList.remove('hidden');
+      } else {
+        section.classList.add('hidden');
+      }
+    }
+
+    function switchTab(tabName) {
+      const contents = document.querySelectorAll('.tab-content');
+      contents.forEach(content => content.classList.add('hidden'));
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(btn  => {
+        btn.classList.remove('bg-scout-brown', 'text-white');
+        btn.classList.add('bg-scout-gray', 'text-gray-700');
+      });
+      document.getElementById(tabName + '-content').classList.remove('hidden');
+      event.target.classList.add('bg-scout-brown', 'text-white');
+      event.target.classList.remove('bg-gray-300', 'text-gray-700');
+    }
+
+    // duplicate scrolling track for seamless loop
+    document.addEventListener('DOMContentLoaded', () => {
+      const track = document.getElementById('scroll-track');
+      if (!track) return;
+      const items = Array.from(track.children);
+      const count = items.length;
+      for (let i = 0; i < count; i++) {
+        const clone = items[i].cloneNode(true);
+        clone.setAttribute('aria-hidden', 'true');
+        track.appendChild(clone);
+      }
+      track.classList.add('animate-scroll');
+      track.querySelectorAll(':scope > *').forEach(el => el.style.flexShrink = '0');
+    });
+  </script>
+
+  <style>
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .animate-scroll {
+      animation: scroll 20s linear infinite;
+      will-change: transform;
+    }
+    .animate-scroll:hover { animation-play-state: paused; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .animate-scroll { animation: none !important; }
+    }
+  </style>
+
+
+</body>
+</html>
