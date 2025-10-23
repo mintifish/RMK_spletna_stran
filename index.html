@@ -4,22 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rod mlinskih kamnov</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'scout-brown': '#654B38',
-            'scout-taupe': '#6B5B51',
-            'scout-gray': '#9E9A9A',
-            'scout-cream': '#DEDCDA',
-            'scout-white': '#F5F5F5'
-          }
-        }
-      }
-    }
-  </script>
+  <link rel="stylesheet" href="rmk-theme/assets/css/tailwind.css">
 </head>
 <body class="bg-white">
   <!-- Header -->
@@ -84,35 +69,44 @@
 
 <!-- Adventures Section -->
 <section class="py-12 bg-scout-white">
+  <style>
+    /* Ensure slider shows 1 slide on small screens and 3 on md+ even if Tailwind responsive classes are missing */
+    .adventure-slide{width:100%;}
+    .mobile-hint{display:block;text-align:center}
+    @media (min-width:768px){
+      .adventure-slide{width:33.3333%;}
+      .mobile-hint{display:none}
+    }
+  </style>
   <div class="container mx-auto px-6">
     <h3 class="text-2xl font-bold text-center text-scout-brown mb-8">Naše pustolovščine</h3>
 
     <div class="relative max-w-6xl mx-auto">
       <!-- Slider track -->
       <div class="overflow-hidden">
-        <div id="adventure-track" class="flex transition-transform duration-500 ease-in-out">
-          <!-- Each slide: 1/3 width -->
-        <div class="w-1/3 flex-shrink-0 relative rounded-lg overflow-hidden">
+  <div id="adventure-track" class="flex transition-transform duration-500 ease-in-out">
+          <!-- Each slide: responsive width (1 per view on small screens, 3 per view on md+ ) -->
+  <div class="w-full md:w-1/3 adventure-slide flex-shrink-0 relative rounded-lg overflow-hidden">
             <img src="NPjpgs/tabor6.jpg" class="w-full h-64 object-cover rounded-lg" alt="Previden delavec">
             <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white text-center py-2">Previden delavec</div>
           </div>
-          <div class="w-1/3 flex-shrink-0 relative rounded-lg overflow-hidden">
+          <div class="w-full md:w-1/3 adventure-slide flex-shrink-0 relative rounded-lg overflow-hidden">
             <img src="NPjpgs/tabor5.jpg" class="w-full h-64 object-cover rounded-lg" alt="Filip in Lan">
             <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white text-center py-2">Filip in Lan</div>
           </div>
-          <div class="w-1/3 flex-shrink-0 relative rounded-lg overflow-hidden">
+          <div class="w-full md:w-1/3 adventure-slide flex-shrink-0 relative rounded-lg overflow-hidden">
             <img src="NPjpgs/tabor4.jpg" class="w-full h-64 object-cover rounded-lg" alt="Dva lenuščka">
             <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white text-center py-2">Dva lenuščka</div>
           </div>
-          <div class="w-1/3 flex-shrink-0 relative rounded-lg overflow-hidden">
+          <div class="w-full md:w-1/3 adventure-slide flex-shrink-0 relative rounded-lg overflow-hidden">
             <img src="NPjpgs/tabor3.jpg" class="w-full h-64 object-cover rounded-lg" alt="Pustolovci">
             <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white text-center py-2">Pustolovci</div>
           </div>
-          <div class="w-1/3 flex-shrink-0 relative rounded-lg overflow-hidden">
+          <div class="w-full md:w-1/3 adventure-slide flex-shrink-0 relative rounded-lg overflow-hidden">
             <img src="NPjpgs/tabor2.jpg" class="w-full h-64 object-cover rounded-lg" alt="Kopanje Podbela">
             <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white text-center py-2">Kopanje Podbela</div>
           </div>
-          <div class="w-1/3 flex-shrink-0 relative rounded-lg overflow-hidden">
+          <div class="w-full md:w-1/3 adventure-slide flex-shrink-0 relative rounded-lg overflow-hidden">
             <img src="NPjpgs/tabor1.jpg" class="w-full h-64 object-cover rounded-lg" alt="Filip in Tian">
             <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white text-center py-2">Filip in Tian</div>
           </div>
@@ -120,13 +114,12 @@
       </div>
 
 
-      <!-- Arrows -->
       <button id="prev-adventure"
-              class="absolute -left-14 top-1/2 -translate-y-1/2 bg-scout-brown text-white p-4 rounded-full shadow hover:bg-scout-taupe transition transform hover:scale-110">
+              class="hidden md:block absolute -left-14 top-1/2 -translate-y-1/2 bg-scout-brown text-white p-4 rounded-full shadow hover:bg-scout-taupe transition transform hover:scale-110">
         &#10094;
       </button>
       <button id="next-adventure"
-              class="absolute -right-14 top-1/2 -translate-y-1/2 bg-scout-brown text-white p-4 rounded-full shadow hover:bg-scout-taupe transition transform hover:scale-110">
+              class="hidden md:block absolute -right-14 top-1/2 -translate-y-1/2 bg-scout-brown text-white p-4 rounded-full shadow hover:bg-scout-taupe transition transform hover:scale-110">
         &#10095;
       </button>
     </div>
@@ -136,33 +129,96 @@
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const track = document.getElementById("adventure-track");
-  const slides = track.children;
+  const slides = Array.from(track.children);
   const prev = document.getElementById("prev-adventure");
   const next = document.getElementById("next-adventure");
 
   let index = 0;
-  const visible = 3; // number of images shown at once
+
+  function getVisibleCount() {
+    // Calculate visible count by measuring slide width vs container width.
+    // This avoids relying on breakpoints and works with the compiled Tailwind CSS.
+    const container = track.parentElement; // the overflow-hidden wrapper
+    const containerWidth = container.clientWidth || track.clientWidth;
+    const slideWidth = slides[0].offsetWidth || containerWidth;
+    const visible = Math.max(1, Math.round(containerWidth / slideWidth));
+    // Fallback: if measurement yields 1 but viewport is large, trust breakpoint expectation.
+    if (visible === 1 && window.innerWidth >= 768) return 3;
+    return visible;
+  }
 
   function updateSlider() {
-    const slideWidth = slides[0].offsetWidth;
+    const slideWidth = slides[0].offsetWidth || track.clientWidth;
     track.style.transform = `translateX(-${index * slideWidth}px)`;
+    // Ensure arrows are visible on larger screens where multiple slides show
+    const visible = getVisibleCount();
+    if (prev) {
+      if (visible > 1) prev.classList.remove('hidden'); else prev.classList.add('hidden');
+    }
+    if (next) {
+      if (visible > 1) next.classList.remove('hidden'); else next.classList.add('hidden');
+    }
+  }
+
+  function clampIndex(i) {
+    const visible = getVisibleCount();
+    return Math.max(0, Math.min(i, slides.length - visible));
   }
 
   next.addEventListener("click", () => {
-    if (index < slides.length - visible) {
-      index++;
-      updateSlider();
-    }
+    index = clampIndex(index + 1);
+    updateSlider();
   });
 
   prev.addEventListener("click", () => {
-    if (index > 0) {
-      index--;
-      updateSlider();
-    }
+    index = clampIndex(index - 1);
+    updateSlider();
   });
 
-  window.addEventListener("resize", updateSlider);
+  // touch / swipe support for mobile
+  let startX = 0;
+  let isTouching = false;
+  track.addEventListener('touchstart', (e) => {
+    startX = e.touches[0].clientX;
+    isTouching = true;
+  }, {passive: true});
+
+  track.addEventListener('touchmove', (e) => {
+    if (!isTouching) return;
+    const dx = e.touches[0].clientX - startX;
+    // allow small drag visual (optional)
+    track.style.transition = 'none';
+    track.style.transform = `translateX(${ -index * slides[0].offsetWidth + dx }px)`;
+  }, {passive: true});
+
+  track.addEventListener('touchend', (e) => {
+    isTouching = false;
+    track.style.transition = '';
+    const endX = (e.changedTouches && e.changedTouches[0]) ? e.changedTouches[0].clientX : startX;
+    const dx = endX - startX;
+    const threshold = 50; // swipe threshold in px
+    if (dx < -threshold) {
+      index = clampIndex(index + 1);
+    } else if (dx > threshold) {
+      index = clampIndex(index - 1);
+    }
+    updateSlider();
+  });
+
+  window.addEventListener("resize", () => {
+    // adjust index when viewport changes so we don't overflow
+    index = clampIndex(index);
+    updateSlider();
+  });
+
+  // Ensure layout updates after images load as well
+  window.addEventListener('load', () => {
+    index = clampIndex(index);
+    updateSlider();
+  });
+
+  // initial layout
+  window.requestAnimationFrame(updateSlider);
 });
 </script>
 </section>

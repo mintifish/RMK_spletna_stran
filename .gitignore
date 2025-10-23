@@ -1,2 +1,4 @@
 rmk-theme/
 *.zip
+node_modules/
+rmk-theme*/

@@ -20,6 +20,7 @@ import argparse
 import os
 import re
 import shutil
+import subprocess
 from pathlib import Path
 from typing import Dict, Set
 
@@ -108,7 +109,12 @@ def replace_asset_paths_in_html(html: str, mapping: Dict[str, str]) -> str:
                 new = found
             else:
                 return match.group(0)
-        php = "<?php echo get_template_directory_uri(); ?>" + "/assets/" + new
+        # Normalize new so we don't duplicate '/assets/' when constructing the template URI
+        new = new.lstrip('/')
+        if new.startswith('assets/'):
+            php = "<?php echo get_template_directory_uri(); ?>" + "/" + new
+        else:
+            php = "<?php echo get_template_directory_uri(); ?>" + "/assets/" + new
         return f'{attr}={quote}' + php + quote
 
     pattern = re.compile(r'(?i)(src|href)=("|\')([^"\']+)("|\')')
@@ -130,6 +136,36 @@ def generate_theme(site_dir: Path, out_dir: Path):
     assets_dir = out_dir / 'assets'
     assets_dir.mkdir(parents=True, exist_ok=True)
 
+    # If a Node build is present (package.json), try to run the Tailwind build to generate a static CSS file.
+    pkg = site_dir / 'package.json'
+    if pkg.exists():
+        # Check for npm/npx availability before attempting to run them
+        npm_path = shutil.which('npm')
+        npx_path = shutil.which('npx')
+        if not npm_path and not npx_path:
+            print('Warning: Node.js/npm (or npx) not found in PATH. Skipping automatic Tailwind build.')
+            print('To generate the CSS manually, install Node.js and run the following in the site folder (PowerShell):')
+            print('  npm install')
+            print('  npm run build:css')
+        else:
+            try:
+                # Prefer npm when available (so package scripts run)
+                if npm_path:
+                    node_modules = site_dir / 'node_modules'
+                    if not node_modules.exists():
+                        print('node_modules not found — running `npm install` (this may take a while)...')
+                        subprocess.run([npm_path, 'install'], cwd=str(site_dir), check=True)
+                    print('Running `npm run build:css` to generate Tailwind CSS...')
+                    subprocess.run([npm_path, 'run', 'build:css'], cwd=str(site_dir), check=True)
+                else:
+                    # Fallback to npx invocation of tailwindcss if available
+                    print('npm not found, using npx to run tailwindcss directly...')
+                    subprocess.run([npx_path, 'tailwindcss', '-i', './src/css/input.css', '-o', './rmk-theme/assets/css/tailwind.css', '--minify'], cwd=str(site_dir), check=True)
+            except subprocess.CalledProcessError as e:
+                print('Warning: npm/npx build failed with exit code', e.returncode)
+            except Exception as e:
+                print('Warning: failed to run npm/npx build:', e)
+
     # Collect assets referenced in the HTML
     assets = collect_local_assets(soup, site_dir)
     mapping = copy_assets(assets, site_dir, assets_dir)
@@ -143,7 +179,7 @@ def generate_theme(site_dir: Path, out_dir: Path):
         head_html = replace_asset_paths_in_html(head_html, mapping)
         # remove the outer <head> tags because we'll write a full head in header.php
         head_inner = BeautifulSoup(head_html, 'html.parser').head
-        head_html = ''.join(str(x) for x in head_inner.contents)
+    head_html = ''.join(str(x) for x in head_inner.contents)
 
     body = soup.body
     header_html = ''
@@ -195,7 +231,7 @@ def generate_theme(site_dir: Path, out_dir: Path):
     style_css = f"""/*
 Theme Name: RMK Theme
 Theme URI: http://example.com/
-Author: auto-generated
+Author: Tian Hrovat  & Andrej Sušnik
 Description: Converted from static site
 Version: 1.0
 */
@@ -240,11 +276,13 @@ add_action('wp_enqueue_scripts', 'rmk_theme_enqueue');
     # Insert collected head HTML (if any) into head before wp_head() so remote scripts (e.g. Tailwind CDN) are preserved
     if head_html:
         # Place head_html before the wp_head() call
-        header_php = header_php.replace("<?php wp_head(); ?>", head_html + "\n<?php wp_head(); ?>")
+        # Normalize any generated Tailwind path variants to a consistent assets/css/tailwind.css path
+        head_html = head_html.replace('rmk-theme/assets/css/tailwind.css', 'assets/css/tailwind.css')
+    # Replace any plain-link to assets/css/tailwind.css with a PHP template-uri version
+    header_php = header_php.replace("<?php wp_head(); ?>", head_html + "\n<?php wp_head(); ?>")
 
     # Insert the static header HTML (if any)
-    if header_html:
-        header_php += '\n' + header_html + '\n'
+    header_php += '\n' + header_html + '\n'
 
     write_file(out_dir / 'header.php', header_php)
 

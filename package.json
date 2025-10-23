@@ -1,0 +1,14 @@
+{
+  "name": "rmk-site-tailwind",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/css/input.css -o ./rmk-theme/assets/css/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./src/css/input.css -o ./rmk-theme/assets/css/tailwind.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.7",
+    "postcss": "^8.4.21",
+    "autoprefixer": "^10.4.14"
+  }
+}
