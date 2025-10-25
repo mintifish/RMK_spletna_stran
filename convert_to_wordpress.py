@@ -109,12 +109,11 @@ def replace_asset_paths_in_html(html: str, mapping: Dict[str, str]) -> str:
                 new = found
             else:
                 return match.group(0)
-        # Normalize new so we don't duplicate '/assets/' when constructing the template URI
+        # Normalize new so we construct a single /assets/... path consistently
         new = new.lstrip('/')
-        if new.startswith('assets/'):
-            php = "<?php echo get_template_directory_uri(); ?>" + "/" + new
-        else:
-            php = "<?php echo get_template_directory_uri(); ?>" + "/assets/" + new
+        # Ensure mapping value is a path relative to the theme's assets directory (e.g. 'css/tailwind.css')
+        # and then prefix with /assets/ when generating the PHP template URI.
+        php = "<?php echo get_template_directory_uri(); ?>" + "/assets/" + new
         return f'{attr}={quote}' + php + quote
 
     pattern = re.compile(r'(?i)(src|href)=("|\')([^"\']+)("|\')')
@@ -179,6 +178,18 @@ def generate_theme(site_dir: Path, out_dir: Path):
     # Collect assets referenced in the HTML
     assets = collect_local_assets(soup, site_dir)
     mapping = copy_assets(assets, site_dir, assets_dir)
+    # Normalize mapping values so they are paths relative to the assets/ dir (no leading 'assets/' or theme-name segments)
+    normalized: Dict[str, str] = {}
+    for k, v in mapping.items():
+        vv = v.lstrip('/')
+        # If the mapping somehow contains the output theme folder name (e.g. 'rmk-theme/...'), strip it
+        if vv.startswith(out_dir.name + '/'):
+            vv = vv[len(out_dir.name) + 1:]
+        # If it already starts with 'assets/', strip that so we can consistently prefix '/assets/' later
+        if vv.startswith('assets/'):
+            vv = vv[len('assets/') :]
+        normalized[k] = vv
+    mapping = normalized
 
     # Extract parts
     head_html = ''
@@ -288,6 +299,10 @@ add_action('wp_enqueue_scripts', 'rmk_theme_enqueue');
         # Place head_html before the wp_head() call
         # Normalize any generated Tailwind path variants to a consistent assets/css/tailwind.css path
         head_html = head_html.replace('rmk-theme/assets/css/tailwind.css', 'assets/css/tailwind.css')
+        # BeautifulSoup may escape PHP tags into HTML entities when reparsing; restore them here
+        head_html = head_html.replace('&lt;?php', '<?php').replace('?&gt;', '?>')
+        # Guard against accidental double '/assets/assets/' sequences
+        head_html = head_html.replace('/assets/assets/', '/assets/')
     # Replace any plain-link to assets/css/tailwind.css with a PHP template-uri version
     header_php = header_php.replace("<?php wp_head(); ?>", head_html + "\n<?php wp_head(); ?>")
 
