@@ -132,6 +132,11 @@ def generate_theme(site_dir: Path, out_dir: Path):
         raise FileNotFoundError(f'index.html not found in {site_dir}')
     soup = BeautifulSoup(index_file.read_text(encoding='utf-8'), 'html.parser')
 
+    # Remove HTML comments from the parsed document so they aren't copied
+    # into generated PHP files (BeautifulSoup represents them as Comment nodes).
+    for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
+        comment.extract()
+
     # Prepare output theme structure
     assets_dir = out_dir / 'assets'
     assets_dir.mkdir(parents=True, exist_ok=True)
@@ -155,8 +160,13 @@ def generate_theme(site_dir: Path, out_dir: Path):
                     if not node_modules.exists():
                         print('node_modules not found — running `npm install` (this may take a while)...')
                         subprocess.run([npm_path, 'install'], cwd=str(site_dir), check=True)
-                    print('Running `npm run build:css` to generate Tailwind CSS...')
-                    subprocess.run([npm_path, 'run', 'build:css'], cwd=str(site_dir), check=True)
+                    # Prefer production build script if available; fall back to build:css
+                    print('Attempting production CSS build: `npm run build:css:prod`...')
+                    try:
+                        subprocess.run([npm_path, 'run', 'build:css:prod'], cwd=str(site_dir), check=True)
+                    except subprocess.CalledProcessError:
+                        print('`build:css:prod` failed or not present; trying `npm run build:css` instead...')
+                        subprocess.run([npm_path, 'run', 'build:css'], cwd=str(site_dir), check=True)
                 else:
                     # Fallback to npx invocation of tailwindcss if available
                     print('npm not found, using npx to run tailwindcss directly...')

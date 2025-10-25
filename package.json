@@ -4,11 +4,14 @@
   "private": true,
   "scripts": {
     "build:css": "tailwindcss -i ./src/css/input.css -o ./rmk-theme/assets/css/tailwind.css --minify",
-    "watch:css": "tailwindcss -i ./src/css/input.css -o ./rmk-theme/assets/css/tailwind.css --watch"
+    "watch:css": "tailwindcss -i ./src/css/input.css -o ./rmk-theme/assets/css/tailwind.css --watch",
+    "build:css:prod": "cross-env NODE_ENV=production tailwindcss -i ./src/css/input.css -o ./rmk-theme/assets/css/tailwind.css --minify",
+    "size-report": "node ./tools/size-report.js ./rmk-theme/assets/css/tailwind.css"
   },
   "devDependencies": {
     "tailwindcss": "^3.4.7",
     "postcss": "^8.4.21",
-    "autoprefixer": "^10.4.14"
+    "autoprefixer": "^10.4.14",
+    "cross-env": "^7.0.3"
   }
 }
