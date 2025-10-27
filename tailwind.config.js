@@ -13,7 +13,8 @@ module.exports = {
         'scout-taupe': '#6B5B51',
         'scout-gray': '#9E9A9A',
         'scout-cream': '#DEDCDA',
-        'scout-white': '#F5F5F5'
+        'scout-white': '#F5F5F5',
+        'scout-footer-link': '#FFE8B0'
       }
     }
   },
