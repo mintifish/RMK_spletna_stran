@@ -254,7 +254,7 @@ Theme Name: RMK Theme
 Theme URI: http://example.com/
 Author: Tian Hrovat  & Andrej Sušnik
 Description: Converted from static site
-Version: 1.3.0
+Version: 1.3.2
 */
 
 /* Add your theme CSS below or edit assets/*.css files copied from the site */
@@ -275,7 +275,23 @@ Version: 1.3.0
 function rmk_theme_enqueue() {
 %s
 }
+add_action('init', function () {
+    remove_action('wp_head', 'print_emoji_detection_script', 7);
+    remove_action('admin_print_scripts', 'print_emoji_detection_script');
+    remove_action('wp_print_styles', 'print_emoji_styles');
+    remove_action('admin_print_styles', 'print_emoji_styles');
+    remove_filter('the_content_feed', 'wp_staticize_emoji');
+    remove_filter('comment_text_rss', 'wp_staticize_emoji');
+    remove_filter('wp_mail', 'wp_staticize_emoji_for_email');
+    add_filter('emoji_svg_url', '__return_false');
+});
 add_action('wp_enqueue_scripts', 'rmk_theme_enqueue');
+add_action('wp_enqueue_scripts', function () {
+    wp_dequeue_style('wp-block-library');
+    wp_dequeue_style('wp-block-library-theme');
+    wp_dequeue_style('global-styles');        // theme.json-generated
+    wp_dequeue_style('classic-theme-styles'); // classic theme base
+}, 100); // run late so it fires after plugins/themes enqueue
 """ % ('\n'.join(enqueue_lines))
     write_file(out_dir / 'functions.php', functions_php)
 
