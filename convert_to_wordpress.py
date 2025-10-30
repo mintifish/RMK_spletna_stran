@@ -254,7 +254,7 @@ Theme Name: RMK Theme
 Theme URI: http://example.com/
 Author: Tian Hrovat  & Andrej Sušnik
 Description: Converted from static site
-Version: 1.2.1
+Version: 1.3.0
 */
 
 /* Add your theme CSS below or edit assets/*.css files copied from the site */

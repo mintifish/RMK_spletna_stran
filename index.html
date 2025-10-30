@@ -50,81 +50,6 @@
       display: block
     }
   </style>
-
-  <style>
-    /* Rutka stripe edges for termini cards: narrow left/right panels with diagonal alternating colors. */
-    .termini-card {
-      --stripe-width: 20px;
-      /* thicker edge */
-      /* two gap variables allow asymmetric stripe widths (useful to make yellow thinner) */
-      --stripe-gap-a: 12px;
-      /* default first stripe size */
-      --stripe-gap-b: 12px;
-      /* default second stripe size */
-      position: relative;
-      overflow: hidden;
-      /* ensure content doesn't overlap the decorative edges */
-      padding-left: calc(var(--stripe-width) + 1rem);
-      padding-right: calc(var(--stripe-width) + 1rem);
-    }
-
-    .termini-card>.termini-card-inner {
-      position: relative;
-      z-index: 1;
-      /* sit above the decorative pseudo-elements */
-    }
-
-    .termini-card::before,
-    .termini-card::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      width: var(--stripe-width);
-      z-index: 0;
-      /* diagonal repeating stripe using two colors provided via CSS variables
-         Use --stripe-gap-a for the first color length and --stripe-gap-b for the second. */
-      background-image: repeating-linear-gradient(135deg,
-          var(--stripe-a) 0 var(--stripe-gap-a),
-          var(--stripe-b) var(--stripe-gap-a) calc(var(--stripe-gap-a) + var(--stripe-gap-b)));
-      background-size: auto;
-    }
-
-    .termini-card::before {
-      left: 0;
-    }
-
-    .termini-card::after {
-      right: 0;
-    }
-
-    /* Zimovanje enhancements: decorative overlay and stat styles */
-    .zimovanje-overlay {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0.25;
-    }
-
-    .zimovanje-stat {
-      transition: transform 220ms cubic-bezier(.2, .9, .3, 1), box-shadow 220ms;
-    }
-
-    .zimovanje-stat:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 10px 20px rgba(2, 6, 23, 0.08);
-    }
-
-    .zimovanje-number {
-      font-weight: 700;
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .zimovanje-stat {
-        transition: none;
-      }
-    }
-  </style>
 </head>
 
 <body class="bg-white">
@@ -132,7 +57,8 @@
   <header class="bg-white shadow-md sticky top-0 z-50">
     <div class="container mx-auto px-6 py-4 flex justify-between items-center">
       <div class="flex items-center space-x-3 ">
-        <img src="logo/rmk-logo.png" alt="Rod Mlinskih kamnov logo" class="w-12 h-12" width="48" height="48" loading="eager">
+        <img src="logo/rmk-logo.png" alt="Rod Mlinskih kamnov logo" class="w-12 h-12" width="48" height="48"
+          loading="eager">
         <h1 class="text-scout-brown font-bold text-4xl">ROD MLINSKIH KAMNOV</h1>
       </div>
       <a href="https://forms.gle/uYdHPSCEJjMAPMDU8" target="_blank"
@@ -283,7 +209,7 @@
           <p class="mt-4 text-sm text-gray-500">Zimska tema ❄️ — pripravite tople jakne!</p>
 
           <div class="mt-6 flex justify-center gap-4">
-            <a href="https://docs.google.com/forms/u/0/d/e/1FAIpQLSdFnZBWSWro7ZEynZKZS2WHoorqe-FWI6TID-GSfp2Jbfk6iA/viewform?usp=send_form&pli=1"
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSc-q-58kyBktbkMwOFxA73t6rksJqV-IekvE8DhpGYY2bd2Fg/viewform?usp=sharing&ouid=114152858338994860481"
               target="_blank"
               class="bg-white text-black px-4 py-2 rounded-lg hover:bg-gray-100 transition">Prijavnica</a>
             <button id="info-toggle" onclick="toggleExtraInfo()"
@@ -924,14 +850,14 @@
             vodnik: "Ana Pšeničnik",
             cas: "četrtek, 15.00 - 16.00",
             razred: "Ni še določen",
-            phone: "*** *** ***"
+            phone: "069-604-303"
           },
           {
             title: "Četrti razredi",
             vodnik: "Ana Bešter",
             cas: "ponedeljek, 16.15 - 17.15",
             razred: "Ni še določen",
-            phone: "*** *** ***"
+            phone: "068-687-115"
           },
           {
             title: "Peti razredi",

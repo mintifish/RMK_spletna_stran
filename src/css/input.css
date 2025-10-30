@@ -3,3 +3,76 @@
 @tailwind utilities;
 
 /* Add any small site-specific overrides here */
+
+/* Rutka stripe edges for termini cards: narrow left/right panels with diagonal alternating colors. */
+.termini-card {
+    --stripe-width: 20px;
+    /* thicker edge */
+    /* two gap variables allow asymmetric stripe widths (useful to make yellow thinner) */
+    --stripe-gap-a: 12px;
+    /* default first stripe size */
+    --stripe-gap-b: 12px;
+    /* default second stripe size */
+    position: relative;
+    overflow: hidden;
+    /* ensure content doesn't overlap the decorative edges */
+    padding-left: calc(var(--stripe-width) + 1rem);
+    padding-right: calc(var(--stripe-width) + 1rem);
+}
+
+.termini-card>.termini-card-inner {
+    position: relative;
+    z-index: 1;
+    /* sit above the decorative pseudo-elements */
+}
+
+.termini-card::before,
+.termini-card::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: var(--stripe-width);
+    z-index: 0;
+    /* diagonal repeating stripe using two colors provided via CSS variables
+         Use --stripe-gap-a for the first color length and --stripe-gap-b for the second. */
+    background-image: repeating-linear-gradient(135deg,
+            var(--stripe-a) 0 var(--stripe-gap-a),
+            var(--stripe-b) var(--stripe-gap-a) calc(var(--stripe-gap-a) + var(--stripe-gap-b)));
+    background-size: auto;
+}
+
+.termini-card::before {
+    left: 0;
+}
+
+.termini-card::after {
+    right: 0;
+}
+
+/* Zimovanje enhancements: decorative overlay and stat styles */
+.zimovanje-overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.25;
+}
+
+.zimovanje-stat {
+    transition: transform 220ms cubic-bezier(.2, .9, .3, 1), box-shadow 220ms;
+}
+
+.zimovanje-stat:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 10px 20px rgba(2, 6, 23, 0.08);
+}
+
+.zimovanje-number {
+    font-weight: 700;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .zimovanje-stat {
+        transition: none;
+    }
+}
