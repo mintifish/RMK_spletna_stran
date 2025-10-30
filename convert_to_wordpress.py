@@ -79,6 +79,21 @@ def copy_assets(assets: Set[Path], site_dir: Path, dest_assets_dir: Path) -> Dic
         dest_path.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(asset, dest_path)
         mapping[str(rel).replace('\\', '/')] = str(dest_path.relative_to(dest_assets_dir).as_posix())
+        # Also copy a .webp companion file if it exists next to the original asset
+        try:
+            companion = asset.with_suffix('.webp')
+            if companion.exists() and companion.is_file():
+                try:
+                    rel_webp = companion.relative_to(site_dir)
+                except Exception:
+                    rel_webp = Path(companion.name)
+                dest_webp = dest_assets_dir / rel_webp
+                dest_webp.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(companion, dest_webp)
+                mapping[str(rel_webp).replace('\\', '/')] = str(dest_webp.relative_to(dest_assets_dir).as_posix())
+        except Exception:
+            # non-fatal: continue copying other assets
+            pass
     return mapping
 
 
@@ -87,18 +102,12 @@ def replace_asset_paths_in_html(html: str, mapping: Dict[str, str]) -> str:
 
     mapping keys are original relative paths (posix), values are paths inside assets folder.
     """
-    # Replace attributes src/href="..." where value matches a key or endswith key
-    def repl(match):
-        attr = match.group(1)
-        quote = match.group(2)
-        val = match.group(3)
-        key = val.lstrip('./')
-        key = key.replace('\\', '/')
-        # Find mapping by exact or by basename fallback
+    # Helper to map a single URL (local) to the php assets path using mapping
+    def map_url_to_php(url: str) -> str | None:
+        key = url.lstrip('./').replace('\\', '/')
         if key in mapping:
             new = mapping[key]
         else:
-            # try basename
             basename = Path(key).name
             found = None
             for k, v in mapping.items():
@@ -108,13 +117,43 @@ def replace_asset_paths_in_html(html: str, mapping: Dict[str, str]) -> str:
             if found:
                 new = found
             else:
-                return match.group(0)
-        # Normalize new so we construct a single /assets/... path consistently
+                return None
         new = new.lstrip('/')
-        # Ensure mapping value is a path relative to the theme's assets directory (e.g. 'css/tailwind.css')
-        # and then prefix with /assets/ when generating the PHP template URI.
-        php = "<?php echo get_template_directory_uri(); ?>" + "/assets/" + new
-        return f'{attr}={quote}' + php + quote
+        return "<?php echo get_template_directory_uri(); ?>" + "/assets/" + new
+
+    # First handle srcset attributes (may contain multiple comma-separated URLs with descriptors)
+    def repl_srcset(match):
+        attr = match.group(1)
+        quote = match.group(2)
+        val = match.group(3)
+        parts = [p.strip() for p in val.split(',') if p.strip()]
+        out_parts = []
+        for part in parts:
+            # a part can be: url [descriptor], e.g. 'img-400.jpg 400w' or just 'img.webp'
+            tokens = part.split()
+            url = tokens[0]
+            descriptor = ' '.join(tokens[1:]) if len(tokens) > 1 else ''
+            if is_remote(url):
+                out_url = url
+            else:
+                mapped = map_url_to_php(url)
+                out_url = mapped if mapped is not None else url
+            out_parts.append((out_url + (' ' + descriptor) if descriptor else out_url).strip())
+        return f'{attr}={quote}' + ', '.join(out_parts) + quote
+
+    html = re.sub(r'(?i)(srcset)=("|\')([^"\']+)("|\')', repl_srcset, html)
+
+    # Replace attributes src/href="..." where value matches a key or basename
+    def repl(match):
+        attr = match.group(1)
+        quote = match.group(2)
+        val = match.group(3)
+        if is_remote(val):
+            return match.group(0)
+        mapped = map_url_to_php(val)
+        if not mapped:
+            return match.group(0)
+        return f'{attr}={quote}' + mapped + quote
 
     pattern = re.compile(r'(?i)(src|href)=("|\')([^"\']+)("|\')')
     return pattern.sub(repl, html)
@@ -254,7 +293,7 @@ Theme Name: RMK Theme
 Theme URI: http://example.com/
 Author: Tian Hrovat  & Andrej Sušnik
 Description: Converted from static site
-Version: 1.3.2
+Version: 1.3.3
 */
 
 /* Add your theme CSS below or edit assets/*.css files copied from the site */
