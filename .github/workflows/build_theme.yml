@@ -38,19 +38,20 @@ jobs:
         run: python convert_to_wordpress.py --site . --out rmk-theme
 
 
-      - name: Zip the theme folder
+      - name: Show generated theme files
         run: |
           if [ -d "rmk-theme" ]; then
-            echo "Creating ZIP with theme files at archive root (no enclosing folder)"
-            # move into the theme dir and zip its contents so the archive contains files at the root
-            (cd rmk-theme && zip -r ../rmk-theme.zip .)
+            echo "Listing rmk-theme files for debugging"
+            ls -la rmk-theme
+            echo "Top-level entries:" && ls -la rmk-theme | head -n 50
           else
-            echo "rmk-theme not found; nothing to zip" && exit 1
+            echo "rmk-theme not found" && exit 1
           fi
 
       - name: Upload theme artifact (1 day retention)
         uses: actions/upload-artifact@v4
         with:
           name: rmk-theme
-          path: rmk-theme.zip
+          # upload the theme directory directly so the artifact archive contains the theme files at the root
+          path: rmk-theme
           retention-days: 1
