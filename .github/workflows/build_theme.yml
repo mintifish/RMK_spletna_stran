@@ -1,0 +1,56 @@
+name: Build WordPress theme
+
+on:
+  workflow_dispatch: {}
+
+jobs:
+  build-theme:
+    name: Build and package WordPress theme
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install NPM packages
+        run: npm install
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install Python requirements
+        run: python -m pip install --upgrade pip && pip install -r requirements.txt
+
+      - name: Clean previous theme output
+        run: |
+          if [ -d "rmk-theme" ]; then
+            echo "Removing existing rmk-theme to avoid interactive prompt"
+            rm -rf rmk-theme
+          fi
+
+      - name: Convert site to WordPress theme
+        run: python convert_to_wordpress.py --site . --out rmk-theme
+
+
+      - name: Zip the theme folder
+        run: |
+          if [ -d "rmk-theme" ]; then
+            echo "Creating ZIP with theme files at archive root (no enclosing folder)"
+            # move into the theme dir and zip its contents so the archive contains files at the root
+            (cd rmk-theme && zip -r ../rmk-theme.zip .)
+          else
+            echo "rmk-theme not found; nothing to zip" && exit 1
+          fi
+
+      - name: Upload theme artifact (1 day retention)
+        uses: actions/upload-artifact@v4
+        with:
+          name: rmk-theme
+          path: rmk-theme.zip
+          retention-days: 1
