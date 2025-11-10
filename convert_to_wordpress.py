@@ -185,7 +185,13 @@ def generate_theme(site_dir: Path, out_dir: Path):
             # Remove the original comment node
             comment.extract()
 
-    # Remove HTML comments from the parsed document so they aren't copied
+    # Replace special WP_POSTS comment with a marker so we can inject PHP later
+    wp_marker = "___WP_POSTS_MARKER___"
+    for comment in soup.find_all(string=lambda text: isinstance(text, Comment) and 'WP_POSTS' in str(text)):
+        # replace the comment node with a plain string marker (not a Comment)
+        comment.replace_with(NavigableString(wp_marker))
+
+    # Remove any remaining HTML comments from the parsed document so they aren't copied
     # into generated PHP files (BeautifulSoup represents them as Comment nodes).
     for comment in soup.find_all(string=lambda text: isinstance(text, Comment)):
         comment.extract()
@@ -294,6 +300,26 @@ def generate_theme(site_dir: Path, out_dir: Path):
                     continue
                 parts.append(str(el))
             main_html = replace_asset_paths_in_html(''.join(parts), mapping)
+
+    # If we inserted a WP_POSTS marker earlier, replace it in the generated main_html
+    # with a WordPress loop that outputs recent posts. We keep this snippet minimal
+    # and styled to match the static article markup.
+    if wp_marker in main_html:
+        wp_posts_php = '''<?php
+$recent = new WP_Query(array('posts_per_page' => 3));
+if ($recent->have_posts()) :
+    while ($recent->have_posts()) : $recent->the_post(); ?>
+    <article class="bg-white p-6 rounded-lg shadow-md">
+      <h4 class="text-xl font-bold text-scout-green mb-2"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h4>
+      <p class="text-scout-brown text-sm mb-3"><?php echo get_the_date(); ?></p>
+      <p class="text-gray-700"><?php echo wp_trim_words(get_the_excerpt(), 30); ?></p>
+    </article>
+<?php
+    endwhile;
+    wp_reset_postdata();
+endif;
+?>'''
+        main_html = main_html.replace(wp_marker, wp_posts_php)
 
         if footer_tag:
             footer_html = replace_asset_paths_in_html(str(footer_tag), mapping)

@@ -3,6 +3,7 @@ module.exports = {
   content: [
     './index.html',
     './generator/**/*.html',
+    './rmk-theme/*.php'
     // If you later add other templates, list them explicitly here, e.g.:
     // './templates/**/*.php',
     // './src/**/*.js'
