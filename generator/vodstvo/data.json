@@ -1,0 +1,255 @@
+{
+  "render": "full",
+  "objs": [
+    {
+      "group": "glavni",
+      "heading": "Načelnik – Filip Jakob Špendl",
+      "image_webp": "vodstvo/FilipJakobSpendl.webp",
+      "image_png": "vodstvo/FilipJakobSpendl.png",
+      "image_fallback": "vodstvo/FilipJakobSpendl.png",
+      "alt": "FilipJakobŠpendl",
+      "description": "Zelo organiziran tabornik zaslužen za povezanost rodu in vodstva, rad se druži in uživa v pospravljanju.",
+      "border_class": "border-4 border-yellow-400"
+    },
+    {
+      "group": "glavni",
+      "heading": "Gospodar – Andrej Sušnik",
+      "image_webp": "vodstvo/AndrejSusnik.webp",
+      "image_png": "vodstvo/AndrejSusnik.png",
+      "image_fallback": "vodstvo/AndrejSusnik.png",
+      "alt": "Andrej Sušnik",
+      "description": "Čudovit vodnik, od katerega vedno nekaj novega izveš. Skrbi, da je vsak član bister in odgovoren.",
+      "border_class": "border-4 border-yellow-400"
+    },
+    {
+      "group": "glavni",
+      "heading": "Zakladnik – Jure Sušnik",
+      "image_webp": "vodstvo/JureSusnik.webp",
+      "image_png": "vodstvo/JureSusnik.png",
+      "image_fallback": "vodstvo/JureSusnik.png",
+      "alt": "Jure Sušnik",
+      "description": "Dolgoletni kuhar, ki je sedaj \"upokojen\" in ima vlogo blagajnika. Obožuje čistočo v kuhinji in med računi.",
+      "border_class": "border-4 border-yellow-400"
+    },
+    {
+      "group": "glavni",
+      "heading": "Propagandist – Matic Božič",
+      "image_webp": "vodstvo/MaticBozic.webp",
+      "image_png": "vodstvo/MaticBozic.png",
+      "image_fallback": "vodstvo/MaticBozic.png",
+      "alt": "Matic Božič",
+      "description": "Priljubljen med mlajšimi. Vodniški vajenec in glavni propagandist.",
+      "border_class": "border-4 border-yellow-400"
+    },
+    {
+      "group": "glavni",
+      "heading": "PP načelnica – Živa Habe",
+      "image_webp": "vodstvo/ZivaHabe.webp",
+      "image_png": "vodstvo/ZivaHabe.png",
+      "image_fallback": "vodstvo/ZivaHabe.png",
+      "alt": "Živa Habe",
+      "description": "PP načelnica in vodnica, zelo povezana z ostalimi rodovi in ima veliko taborniških znanj.",
+      "border_class": "border-4 border-yellow-400"
+    },
+    {
+      "group": "glavni",
+      "heading": "GG načelnica – Maša Kopitar",
+      "image_webp": "vodstvo/MasaKopitar.webp",
+      "image_png": "vodstvo/MasaKopitar.png",
+      "image_fallback": "vodstvo/MasaKopitar.png",
+      "alt": "Maša Kopitar",
+      "description": "Zelo živahna, vedno polna energije in vedno pripravljena za druženje.",
+      "border_class": "border-4 border-yellow-400"
+    },
+    {
+      "group": "glavni",
+      "heading": "MČ načelnica – Žana Habe",
+      "image_webp": "vodstvo/ZanaHabe.webp",
+      "image_jpeg": "vodstvo/ZanaHabe.jpg",
+      "image_fallback": "vodstvo/ZanaHabe.jpg",
+      "alt": "Žana Habe",
+      "description": "Samozavestna in ljubeča, vedno pripravljena na vsako oviro s svojim survival packom.",
+      "border_class": "border-4 border-yellow-400"
+    },
+    {
+      "group": "glavni",
+      "heading": "IT podpora – Tian Hrovat",
+      "image_webp": "vodstvo/TianHrovat.webp",
+      "image_png": "vodstvo/TianHrovat.png",
+      "image_fallback": "vodstvo/TianHrovat.png",
+      "alt": "Tian Hrovat",
+      "description": "Vodniški vajenec in IT podpora našega rodu ter rodov rekorder za govorjenje.",
+      "border_class": "border-4 border-yellow-400"
+    },
+    {
+      "group": "vodniki",
+      "heading": "Vodnica – Neža Habe",
+      "image_webp": "vodstvo/NezaHabe.webp",
+      "image_jpeg": "vodstvo/NezaHabe.jpg",
+      "image_fallback": "vodstvo/NezaHabe.jpg",
+      "alt": "Neža Habe",
+      "description": "Odlična vodnica, ki je pod vodstvom Jureta Sušnika postala tudi odlična glava kuhinje.",
+      "border_class": "border-4 border-gray-300"
+    },
+    {
+      "group": "vodniki",
+      "heading": "Vodnica – Ana Bešter",
+      "image_webp": "vodstvo/AnaBester.webp",
+      "image_png": "vodstvo/AnaBester.png",
+      "image_fallback": "vodstvo/AnaBester.png",
+      "alt": "Ana Bešter",
+      "description": "Javi se za ogromno nalog in s svojo energijo krepi vsako aktivnost rodu. Teta iz ozadja",
+      "border_class": "border-4 border-gray-300"
+    },
+    {
+      "group": "vodniki",
+      "heading": "Vodnica – Ana Pšeničnik",
+      "image_webp": "vodstvo/AnaPsenicnik.webp",
+      "image_png": "vodstvo/AnaPsenicnik.png",
+      "image_fallback": "vodstvo/AnaPsenicnik.png",
+      "alt": "Ana Pšeničnik",
+      "description": "Najbolj kulska oseba na taboru! In drugje.",
+      "border_class": "border-4 border-gray-300"
+    },
+    {
+      "group": "vodniki",
+      "heading": "Vodnica – Tia Poteko",
+      "image_webp": "vodstvo/TianPoteko.webp",
+      "image_png": "vodstvo/TianPoteko.png",
+      "image_fallback": "vodstvo/TianPoteko.png",
+      "alt": "Tia Poteko",
+      "description": "Umetniško nadarjena vodnica, ki je zelo povezana svojim vodom. Aktualna rodova prvakinja v štiri v vrsto.",
+      "border_class": "border-4 border-gray-300"
+    },
+    {
+      "group": "vodniki",
+      "heading": "Vodnica – Nika Habe",
+      "image_webp": "vodstvo/NikaHabe.webp",
+      "image_png": "vodstvo/NikaHabe.png",
+      "image_fallback": "vodstvo/NikaHabe.png",
+      "alt": "Nika Habe",
+      "description": "Vodnica polna veselja in šal. Na stvari doda pogled iz druge perspektive.",
+      "border_class": "border-4 border-gray-300"
+    },
+    {
+      "group": "vodniki",
+      "heading": "Vodnik – Andrej Sušnik",
+      "image_webp": "vodstvo/AndrejSusnik.webp",
+      "image_png": "vodstvo/AndrejSusnik.png",
+      "image_fallback": "vodstvo/AndrejSusnik.png",
+      "alt": "Andrej Sušnik",
+      "description": "Čudovit vodnik, od katerega vedno nekaj novega izveš. Kaskader v taborniških skečih.",
+      "border_class": "border-4 border-gray-300"
+    },
+    {
+      "group": "vodniki",
+      "heading": "Vodnica – Maša Kopitar",
+      "image_webp": "vodstvo/MasaKopitar.webp",
+      "image_png": "vodstvo/MasaKopitar.png",
+      "image_fallback": "vodstvo/MasaKopitar.png",
+      "alt": "Maša Kopitar",
+      "description": "Zelo živahna, vedno polna energije in vedno pripravljena za druženje.",
+      "border_class": "border-4 border-gray-300"
+    },
+    {
+      "group": "vodniki",
+      "heading": "Vodnica – Žana Habe",
+      "image_webp": "vodstvo/ZanaHabe.webp",
+      "image_jpeg": "vodstvo/ZanaHabe.jpg",
+      "image_fallback": "vodstvo/ZanaHabe.jpg",
+      "alt": "Žana Habe",
+      "description": "Samozavestna, Vedno pripravljena s svojim survival packom, tabornica, ki je vedno pripravljena pomagati.",
+      "border_class": "border-4 border-gray-300"
+    },
+    {
+      "group": "vodniki",
+      "heading": "Vodnica – Živa Habe",
+      "image_webp": "vodstvo/ZivaHabe.webp",
+      "image_png": "vodstvo/ZivaHabe.png",
+      "image_fallback": "vodstvo/ZivaHabe.png",
+      "alt": "Živa Habe",
+      "description": "Vodnica, zelo povezana z ostalimi rodovi in ima veliko taborniških znanj.",
+      "border_class": "border-4 border-gray-300"
+    },
+    {
+      "group": "vodniki",
+      "heading": "Vodnik – Tian Hrovat",
+      "image_webp": "vodstvo/TianHrovat.webp",
+      "image_png": "vodstvo/TianHrovat.png",
+      "image_fallback": "vodstvo/TianHrovat.png",
+      "alt": "Tian Hrovat",
+      "description": "Vodniški vajenec, ki vsrkava vsako varianto vzoje v vlogi vodnika.",
+      "border_class": "border-4 border-gray-300"
+    },
+    {
+      "group": "vodniki",
+      "heading": "Vodnik – Matic Božič",
+      "image_webp": "vodstvo/MaticBozic.webp",
+      "image_png": "vodstvo/MaticBozic.png",
+      "image_fallback": "vodstvo/MaticBozic.png",
+      "alt": "Matic Božič",
+      "description": "Sovodnik, ki je tudi zelo zelo priljubljen med mlajšimi.",
+      "border_class": "border-4 border-gray-300"
+    },
+    {
+      "group": "vodniki",
+      "heading": "Spiritualna vodja – Jama",
+      "image_webp": "vodstvo/jama.webp",
+      "image_png": "vodstvo/jama.png",
+      "image_fallback": "vodstvo/jama.png",
+      "alt": "Jama",
+      "description": "Mistično bitje jama, ki se prebudi vsako leto, da sklene taborniško ljubezen.",
+      "border_class": "border-4 border-gray-300"
+    },
+    {
+      "group": "gg",
+      "heading": "GG vzgoja – Jaša Farič",
+      "image_webp": "vodstvo/JasaFaric.webp",
+      "image_png": "vodstvo/JasaFaric.png",
+      "image_fallback": "vodstvo/JasaFaric.png",
+      "alt": "Jaša Farič",
+      "description": "Tabornik, ki je vedno vesel in je vedno na voljo za vsako malenkost.",
+      "border_class": "border-4 border-gray-400"
+    },
+    {
+      "group": "gg",
+      "heading": "GG vzgoja – Žan Mežnar",
+      "image_webp": "vodstvo/ZanMeznar.webp",
+      "image_png": "vodstvo/ZanMeznar.png",
+      "image_fallback": "vodstvo/ZanMeznar.png",
+      "alt": "Žan Mežnar",
+      "description": "Vodniški vajenec, ki je tudi zelo priljubljen med mlajšimi.",
+      "border_class": "border-4 border-gray-400"
+    },
+    {
+      "group": "gg",
+      "heading": "GG vzgoja – Filip Karadžič",
+      "image_webp": "vodstvo/FilipKaradzic.webp",
+      "image_png": "vodstvo/FilipKaradzic.png",
+      "image_fallback": "vodstvo/FilipKaradzic.png",
+      "alt": "Filip Karadžič",
+      "description": "Izversten orodjar vedno prinse kar rabiš v rekordnem času.",
+      "border_class": "border-4 border-gray-400"
+    },
+    {
+      "group": "gg",
+      "heading": "GG vzgoja – Matjaž Petrič Kovačič",
+      "image_webp": "vodstvo/MatjazPetricKovacic.webp",
+      "image_png": "vodstvo/MatjazPetricKovacic.png",
+      "image_fallback": "vodstvo/MatjazPetricKovacic.png",
+      "alt": "Matjaž Petrič Kovačič",
+      "description": "Močn PP kanarček, ki doda k vajbu.",
+      "border_class": "border-4 border-gray-400"
+    },
+    {
+      "group": "ppklub",
+      "heading": "PP klub – Ina Zabret",
+      "image_webp": "vodstvo/InaZabret.webp",
+      "image_jpeg": "vodstvo/InaZabret.jpg",
+      "image_fallback": "vodstvo/InaZabret.jpg",
+      "alt": "Ina Zabret",
+      "description": "Tabornica, ki prinaša svežino, ustvarjalnost in burek v na tabor.",
+      "border_class": "border-4 border-gray-400"
+    }
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "objs": [
+    {
+      "title": "Drugi razredi",
+      "vodnik": "Neža Habe",
+      "cas": "torek, 16.00 - 17.00",
+      "razred": "Ni še določen",
+      "phone": "030-732-991",
+      "stripe_a": "#FBBF24",
+      "stripe_b": "#EF4444",
+      "gap_a": "6px",
+      "gap_b": "14px"
+    },
+    {
+      "title": "Tretji razredi",
+      "vodnik": "Ana Pšeničnik",
+      "cas": "četrtek, 15.00 - 16.00",
+      "razred": "Ni še določen",
+      "phone": "069-604-303",
+      "stripe_a": "#FBBF24",
+      "stripe_b": "#EF4444",
+      "gap_a": "6px",
+      "gap_b": "14px"
+    },
+    {
+      "title": "Četrti razredi",
+      "vodnik": "Ana Bešter",
+      "cas": "ponedeljek, 16.15 - 17.15",
+      "razred": "Ni še določen",
+      "phone": "068-687-115",
+      "stripe_a": "#FBBF24",
+      "stripe_b": "#EF4444",
+      "gap_a": "6px",
+      "gap_b": "14px"
+    },
+    {
+      "title": "Peti razredi",
+      "vodnik": "Žana Habe",
+      "cas": "ponedeljek, 15.00 - 16.00",
+      "razred": "Ni še določen",
+      "phone": "030-744-230",
+      "stripe_a": "#FBBF24",
+      "stripe_b": "#EF4444",
+      "gap_a": "6px",
+      "gap_b": "14px"
+    },
+    {
+      "title": "Šesti razredi",
+      "vodnik": "Maša Kopitar",
+      "cas": "četrtek, 16.00 - 17.00",
+      "razred": "Ni še določen",
+      "phone": "051-217-337",
+      "stripe_a": "#00b740",
+      "stripe_b": "#FBBF24",
+      "gap_a": "14px",
+      "gap_b": "6px"
+    },
+    {
+      "title": "Sedmi razredi",
+      "vodnik": "Živa Habe",
+      "cas": "torek, 16.00 - 17.00",
+      "razred": "Ni še določen",
+      "phone": "030-669-031",
+      "stripe_a": "#00b740",
+      "stripe_b": "#FBBF24",
+      "gap_a": "14px",
+      "gap_b": "6px"
+    },
+    {
+      "title": "Osmi razredi",
+      "vodnik": "Andrej Sušnik",
+      "cas": "četrtek, 16.00 - 17.00",
+      "razred": "Ni še določen",
+      "phone": "051-755-118",
+      "stripe_a": "#00b740",
+      "stripe_b": "#FBBF24",
+      "gap_a": "14px",
+      "gap_b": "6px"
+    },
+    {
+      "title": "Deveti razredi",
+      "vodnik": "Filip Jakob Špendl",
+      "cas": "petek, 15.00 - 16.00",
+      "razred": "Ni še določen",
+      "phone": "070-366-357",
+      "stripe_a": "#3B82F6",
+      "stripe_b": "#FBBF24",
+      "gap_a": "14px",
+      "gap_b": "6px"
+    }
+  ]
+}

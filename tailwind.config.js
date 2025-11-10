@@ -2,6 +2,8 @@ module.exports = {
   // Tightened content list: include only files that contain Tailwind classes
   content: [
     './index.html',
+    './generator/**/*.html',
+    './rmk-theme/*.php'
     // If you later add other templates, list them explicitly here, e.g.:
     // './templates/**/*.php',
     // './src/**/*.js'

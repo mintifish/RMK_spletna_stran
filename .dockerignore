@@ -1,0 +1,17 @@
+# Ignore typical large / local-only files
+node_modules/
+venv/
+__pycache__/
+.venv/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+/.git
+/.vscode
+/.DS_Store
+
+# Ignore full resolution images (they're in repo but usually not needed in the container build context)
+full_res_logo/
+full_res_NPjpgs/
+full_res_vodstvo/

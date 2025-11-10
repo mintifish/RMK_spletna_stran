@@ -1,0 +1,9 @@
+<div class="w-full md:w-1/3 adventure-slide flex-shrink-0 relative rounded-lg overflow-hidden">
+    <picture>
+        <source srcset="{{webp_path}}" type="image/webp">
+        <source srcset="{{jpeg_path}}" type="image/jpeg">
+        <img src="{{jpeg_path}}" class="w-full h-64 object-cover rounded-lg" alt="{{title}}" width="1024" height="512"
+            loading="lazy" fetchpriority="low" sizes="(max-width: 767px) 100vw, (min-width:768px) 33vw">
+    </picture>
+    <div class="absolute bottom-0 w-full bg-black bg-opacity-50 text-white text-center py-2">{{title}}</div>
+</div>
