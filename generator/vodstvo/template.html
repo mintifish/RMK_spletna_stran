@@ -1,0 +1,70 @@
+{# Full vodstvo section template - expects data.objs array with group tags #}
+<h3 class="text-2xl font-bold text-scout-brown mb-8 text-center">Spoznajte naše vodstvo</h3>
+
+{# Glavni / Rodova uprava #}
+<h4 class="text-xl font-bold text-scout-brown mb-4 text-center">Člani rodove uprave</h4>
+<div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-10">
+  {% for p in data.objs if p.group == 'glavni' %}
+  <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 {{ p.border_class }}">
+    <picture>
+      {% if p.image_webp %}<source srcset="{{ p.image_webp }}" type="image/webp">{% endif %}
+      {% if p.image_png %}<source srcset="{{ p.image_png }}" type="image/png">{% endif %}
+      {% if p.image_jpeg %}<source srcset="{{ p.image_jpeg }}" type="image/jpeg">{% endif %}
+      <img src="{{ p.image_fallback }}" alt="{{ p.alt }}" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300" width="128" height="128" loading="lazy">
+    </picture>
+    <h4 class="text-lg font-bold text-scout-green">{{ p.heading }}</h4>
+    <p class="text-gray-700 mt-2 text-sm">{{ p.description }}</p>
+  </div>
+  {% endfor %}
+</div>
+
+{# Vodniki #}
+<h4 class="text-xl font-bold text-scout-brown mb-4 text-center">Vodniki</h4>
+<div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+  {% for p in data.objs if p.group == 'vodniki' %}
+  <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 {{ p.border_class }}">
+    <picture>
+      {% if p.image_webp %}<source srcset="{{ p.image_webp }}" type="image/webp">{% endif %}
+      {% if p.image_png %}<source srcset="{{ p.image_png }}" type="image/png">{% endif %}
+      {% if p.image_jpeg %}<source srcset="{{ p.image_jpeg }}" type="image/jpeg">{% endif %}
+      <img src="{{ p.image_fallback }}" alt="{{ p.alt }}" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300" width="128" height="128" loading="lazy">
+    </picture>
+    <h4 class="text-lg font-bold text-scout-green">{{ p.heading }}</h4>
+    <p class="text-gray-700 mt-2 text-sm">{{ p.description }}</p>
+  </div>
+  {% endfor %}
+</div>
+
+{# GG vzgoja #}
+<h4 class="text-xl font-bold text-scout-brown mb-4 text-center mt-10">GG vzgoja</h4>
+<div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center">
+  {% for p in data.objs if p.group == 'gg' %}
+  <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 {{ p.border_class }}">
+    <picture>
+      {% if p.image_webp %}<source srcset="{{ p.image_webp }}" type="image/webp">{% endif %}
+      {% if p.image_png %}<source srcset="{{ p.image_png }}" type="image/png">{% endif %}
+      {% if p.image_jpeg %}<source srcset="{{ p.image_jpeg }}" type="image/jpeg">{% endif %}
+      <img src="{{ p.image_fallback }}" alt="{{ p.alt }}" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300" width="128" height="128" loading="lazy">
+    </picture>
+    <h4 class="text-lg font-bold text-scout-green">{{ p.heading }}</h4>
+    <p class="text-gray-700 mt-2 text-sm">{{ p.description }}</p>
+  </div>
+  {% endfor %}
+</div>
+
+{# PP klub #}
+<h4 class="text-xl font-bold text-scout-brown mb-4 text-center mt-10">PP klub</h4>
+<div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center">
+  {% for p in data.objs if p.group == 'ppklub' %}
+  <div class="bg-white rounded-lg shadow-md p-6 text-center hover:shadow-lg transition transform hover:-translate-y-1 {{ p.border_class }}">
+    <picture>
+      {% if p.image_webp %}<source srcset="{{ p.image_webp }}" type="image/webp">{% endif %}
+      {% if p.image_png %}<source srcset="{{ p.image_png }}" type="image/png">{% endif %}
+      {% if p.image_jpeg %}<source srcset="{{ p.image_jpeg }}" type="image/jpeg">{% endif %}
+      <img src="{{ p.image_fallback }}" alt="{{ p.alt }}" class="w-32 h-32 mx-auto rounded-full object-cover mb-4 border border-gray-300" width="128" height="128" loading="lazy">
+    </picture>
+    <h4 class="text-lg font-bold text-scout-green">{{ p.heading }}</h4>
+    <p class="text-gray-700 mt-2 text-sm">{{ p.description }}</p>
+  </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,34 @@
+{
+    "objs": [
+        {
+            "title": "Previden delavec",
+            "webp_path": "NPjpgs/tabor6.webp",
+            "jpeg_path": "NPjpgs/tabor6.jpg"
+        },
+        {
+            "title": "Filip in Lan",
+            "webp_path": "NPjpgs/tabor5.webp",
+            "jpeg_path": "NPjpgs/tabor5.jpg"
+        },
+        {
+            "title": "Dva lenuščka",
+            "webp_path": "NPjpgs/tabor4.webp",
+            "jpeg_path": "NPjpgs/tabor4.jpg"
+        },
+        {
+            "title": "Pustolovci",
+            "webp_path": "NPjpgs/tabor3.webp",
+            "jpeg_path": "NPjpgs/tabor3.jpg"
+        },
+        {
+            "title": "Kopanje Podbela",
+            "webp_path": "NPjpgs/tabor2.webp",
+            "jpeg_path": "NPjpgs/tabor2.jpg"
+        },
+        {
+            "title": "Filip in Tian",
+            "webp_path": "NPjpgs/tabor1.webp",
+            "jpeg_path": "NPjpgs/tabor1.jpg"
+        }
+    ]
+}

@@ -2,3 +2,4 @@ rmk-theme/
 *.zip
 node_modules/
 rmk-theme*/
+**/__pycache__/

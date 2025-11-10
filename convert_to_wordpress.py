@@ -23,6 +23,7 @@ import shutil
 import subprocess
 from pathlib import Path
 from typing import Dict, Set
+from generator.convert import generate_html
 
 try:
     from bs4 import BeautifulSoup, Comment, NavigableString
@@ -32,7 +33,6 @@ except Exception as e:
 
 
 ASSET_EXTS = {'.css', '.js', '.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp', '.ico', '.woff', '.woff2', '.ttf', '.otf'}
-
 
 def is_remote(url: str) -> bool:
     if not url:
@@ -169,6 +169,21 @@ def generate_theme(site_dir: Path, out_dir: Path):
     if not index_file.exists():
         raise FileNotFoundError(f'index.html not found in {site_dir}')
     soup = BeautifulSoup(index_file.read_text(encoding='utf-8'), 'html.parser')
+
+    # find all the comments in the ./index.html that have the form <!-- GENERATOR: <template_name> -->
+    templates = generate_html()
+    comments = soup.find_all(string=lambda text: isinstance(text, Comment) and text.startswith(" GENERATOR:"))
+    for comment in comments:
+        template_name = comment.split(":")[1].strip()
+        if template_name in templates:
+            # If a matching template is found, insert the template HTML as parsed nodes
+            # so BeautifulSoup treats it as real HTML (not escaped text).
+            fragment = BeautifulSoup(templates[template_name], 'html.parser')
+            # Insert each top-level node from the fragment after the comment, preserving order
+            for node in reversed(list(fragment.contents)):
+                comment.insert_after(node)
+            # Remove the original comment node
+            comment.extract()
 
     # Remove HTML comments from the parsed document so they aren't copied
     # into generated PHP files (BeautifulSoup represents them as Comment nodes).
