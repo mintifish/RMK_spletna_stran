@@ -332,9 +332,9 @@ endif;
     style_css = f"""/*
 Theme Name: RMK Theme
 Theme URI: http://example.com/
-Author: Tian Hrovat  & Andrej Sušnik
+Author: Tian Hrovat & Andrej Sušnik
 Description: Converted from static site
-Version: 1.3.3
+Version: 1.4.0
 */
 
 /* Add your theme CSS below or edit assets/*.css files copied from the site */
