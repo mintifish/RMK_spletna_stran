@@ -1,12 +1,12 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   // Tightened content list: include only files that contain Tailwind classes
   content: [
     './index.html',
     './generator/**/*.html',
-    './rmk-theme/*.php'
-    // If you later add other templates, list them explicitly here, e.g.:
-    // './templates/**/*.php',
-    // './src/**/*.js'
+    './generator/**/**/*.html',
+    './rmk-theme/**/*.php',
+    './rmk-theme/**/**/*.php'
   ],
   theme: {
     extend: {
@@ -16,6 +16,7 @@ module.exports = {
         'scout-gray': '#9E9A9A',
         'scout-cream': '#DEDCDA',
         'scout-white': '#F5F5F5',
+        'scout-green': '#2D5016',
         'scout-footer-link': '#FFE8B0'
       }
     }

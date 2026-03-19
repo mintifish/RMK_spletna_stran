@@ -2,6 +2,42 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer theme {
+  :root {
+    --color-scout-brown: #654B38;
+    --color-scout-taupe: #6B5B51;
+    --color-scout-gray: #9E9A9A;
+    --color-scout-cream: #DEDCDA;
+    --color-scout-white: #F5F5F5;
+    --color-scout-green: #2D5016;
+    --color-scout-footer-link: #FFE8B0;
+  }
+}
+
+@layer utilities {
+  /* Custom text color utilities */
+  .text-scout-brown { @apply text-[#654B38]; }
+  .text-scout-taupe { @apply text-[#6B5B51]; }
+  .text-scout-gray { @apply text-[#9E9A9A]; }
+  .text-scout-cream { @apply text-[#DEDCDA]; }
+  .text-scout-white { @apply text-[#F5F5F5]; }
+  .text-scout-green { @apply text-[#2D5016]; }
+  
+  /* Custom background color utilities */
+  .bg-scout-brown { @apply bg-[#654B38]; }
+  .bg-scout-taupe { @apply bg-[#6B5B51]; }
+  .bg-scout-gray { @apply bg-[#9E9A9A]; }
+  .bg-scout-cream { @apply bg-[#DEDCDA]; }
+  .bg-scout-white { @apply bg-[#F5F5F5]; }
+  .bg-scout-green { @apply bg-[#2D5016]; }
+  .bg-scout-footer-link { @apply bg-[#FFE8B0]; }
+  
+  /* Hover states */
+  .hover\:bg-scout-brown:hover { @apply bg-[#654B38]; }
+  .hover\:bg-scout-taupe:hover { @apply bg-[#6B5B51]; }
+  .hover\:bg-scout-green:hover { @apply bg-[#2D5016]; }
+}
+
 /* Add any small site-specific overrides here */
 
 /* Rutka stripe edges for termini cards: narrow left/right panels with diagonal alternating colors. */

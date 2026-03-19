@@ -10,12 +10,8 @@
     content="Rod mlinskih kamnov – taborniki Radomlje. Prijave na aktivnosti, termini vodovih sestankov, novice, galerija in kontakt. Pridruži se nam!">
   <!-- Preconnect to improve font / asset handshakes if assets served from same origin or CDN -->
   <link rel="preconnect" href="/" crossorigin>
-  <!-- Preload main stylesheet to reduce render-blocking time and improve FCP -->
-  <!-- <link rel="preload" href="rmk-theme/assets/css/tailwind.css" as="style"> -->
-  <link rel="stylesheet" href="rmk-theme/assets/css/tailwind.css" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet" href="rmk-theme/assets/css/tailwind.css">
-  </noscript>
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="rmk-theme/assets/css/tailwind.css">
   <!-- Inline a tiny critical CSS snippet for header and hero to show meaningful content earlier -->
   <style>
     /* Critical CSS: minimal rules to render header and hero content quickly */
@@ -159,30 +155,30 @@
 
           <div id="zimovanje-countdown" class="w-full grid grid-cols-4 gap-4" aria-live="polite">
             <div class="flex flex-col items-center bg-yellow-400 rounded-xl p-4 shadow-md">
-              <div id="cd-days" class="text-4xl md:text-5xl font-bold text-amber-900">0</div>
-              <div class="text-xs font-semibold text-amber-800 mt-1">dnevi</div>
+              <div id="cd-days" class="text-4xl md:text-5xl font-bold text-amber-950">0</div>
+              <div class="text-xs font-semibold text-amber-950 mt-1">dnevi</div>
             </div>
             <div class="flex flex-col items-center bg-orange-300 rounded-xl p-4 shadow-md">
-              <div id="cd-hours" class="text-4xl md:text-5xl font-bold text-amber-900">0</div>
-              <div class="text-xs font-semibold text-amber-800 mt-1">ure</div>
+              <div id="cd-hours" class="text-4xl md:text-5xl font-bold text-amber-950">0</div>
+              <div class="text-xs font-semibold text-amber-950 mt-1">ure</div>
             </div>
             <div class="flex flex-col items-center bg-yellow-300 rounded-xl p-4 shadow-md">
-              <div id="cd-minutes" class="text-4xl md:text-5xl font-bold text-amber-900">0</div>
-              <div class="text-xs font-semibold text-amber-800 mt-1">minute</div>
+              <div id="cd-minutes" class="text-4xl md:text-5xl font-bold text-amber-950">0</div>
+              <div class="text-xs font-semibold text-amber-950 mt-1">minute</div>
             </div>
             <div class="flex flex-col items-center bg-amber-400 rounded-xl p-4 shadow-md">
-              <div id="cd-seconds" class="text-4xl md:text-5xl font-bold text-amber-900">0</div>
-              <div class="text-xs font-semibold text-amber-800 mt-1">sekunde</div>
+              <div id="cd-seconds" class="text-4xl md:text-5xl font-bold text-amber-950">0</div>
+              <div class="text-xs font-semibold text-amber-950 mt-1">sekunde</div>
             </div>
           </div>
 
-          <p class="mt-4 text-sm text-amber-800 font-medium">☀️ 17. – 24. julij 2026 &nbsp;·&nbsp; Borst ob Krki pri Čatežu 🏕️</p>
+          <p class="mt-4 text-sm text-amber-950 font-medium">☀️ 17. – 24. julij 2026 &nbsp;·&nbsp; Borst ob Krki pri Čatežu 🏕️</p>
 
           <div class="mt-6 flex justify-center gap-4">
             <a href="https://docs.google.com/forms/d/e/1FAIpQLScODt6gOeX2P2NfuxawZQ_QiUEmpoUItighomgHuo2lFUEzJA/viewform" target="_blank"
-              class="bg-amber-500 text-white font-semibold px-5 py-2 rounded-lg hover:bg-amber-600 transition shadow">Prijavnica</a>
+              class="bg-amber-700 text-white font-semibold px-5 py-2 rounded-lg hover:bg-amber-800 transition shadow">Prijavnica</a>
             <button id="info-toggle" onclick="toggleExtraInfo()"
-              class="bg-white text-amber-800 font-semibold px-5 py-2 rounded-lg hover:bg-yellow-50 transition shadow border border-yellow-300">Več informacij</button>
+              class="bg-white text-amber-950 font-semibold px-5 py-2 rounded-lg hover:bg-yellow-50 transition shadow border border-yellow-300">Več informacij</button>
           </div>
 
           <!-- Expandable extra info (hidden by default) -->

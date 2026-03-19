@@ -9,9 +9,10 @@
     "size-report": "node ./tools/size-report.js ./rmk-theme/assets/css/tailwind.css"
   },
   "devDependencies": {
-    "tailwindcss": "^3.4.7",
-    "postcss": "^8.4.21",
-    "autoprefixer": "^10.4.14",
-    "cross-env": "^7.0.3"
+    "@tailwindcss/cli": "^4.2.2",
+    "autoprefixer": "^10.4.27",
+    "cross-env": "^10.1.0",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.2"
   }
 }
